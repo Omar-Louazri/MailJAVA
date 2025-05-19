@@ -88,4 +88,17 @@ public class MailSender {
 
         Transport.send(message);
     }
+    /**
+     * Ferme la connexion SMTP.
+     */
+    public static void closeConnection() {
+        // Logique de fermeture de la connexion SMTP
+        // Cela dépend de la bibliothèque que vous utilisez pour gérer les connexions SMTP.
+        // Par exemple, si vous utilisez JavaMail, vous n'avez pas besoin de fermer explicitement
+        // la connexion car elle est gérée automatiquement.
+        System.out.println("Fermeture de la connexion SMTP.");
+        // Si vous avez une instance de Session, vous pouvez la fermer ici.
+        //session.close();
+
+    }
 }

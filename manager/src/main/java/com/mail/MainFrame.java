@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
         JButton sentBtn         = createSidebarButton("Messages envoyés");
         JButton mailingListsBtn = createSidebarButton("Listes de diffusion");
         JButton schedulerBtn    = createSidebarButton("Scheduler");
-        JButton settingsBtn     = createSidebarButton("Paramètres");
+        JButton deconnectBtn     = createSidebarButton("Deconnexion");
 
         composeBtn.addActionListener(e -> showComposeDialog());
         inboxBtn.addActionListener(e -> { isViewingSentEmails = false; loadInboxMessages(); });
@@ -120,7 +120,11 @@ public class MainFrame extends JFrame {
             dlg.setLocationRelativeTo(this);
             dlg.setVisible(true);
         });
-        settingsBtn.addActionListener(e -> JOptionPane.showMessageDialog(this, "Fonctionnalité à venir!"));
+        deconnectBtn.addActionListener(e -> {
+            Deconexion decon = new Deconexion(userEmail, mailSender.getPassword());
+            decon.deconnexion();
+            dispose();
+        });
 
         sidebarPanel.add(composeBtn);
         sidebarPanel.add(Box.createVerticalStrut(10));
@@ -132,7 +136,7 @@ public class MainFrame extends JFrame {
         sidebarPanel.add(Box.createVerticalStrut(10));
         sidebarPanel.add(schedulerBtn);
         sidebarPanel.add(Box.createVerticalStrut(10));
-        sidebarPanel.add(settingsBtn);
+        sidebarPanel.add(deconnectBtn);
         sidebarPanel.add(Box.createVerticalGlue());
     }
 
