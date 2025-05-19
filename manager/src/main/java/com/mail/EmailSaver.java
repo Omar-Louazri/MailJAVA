@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class EmailSaver {
 
-    private static final String DB_URL  = "jdbc:postgresql://localhost:5432/jamesdb";
+    private static final String DB_URL  = "jdbc:postgresql://localhost:5433/jamesdb";
     private static final String DB_USER = "postgres";
     private static final String DB_PASS = "1234";
 

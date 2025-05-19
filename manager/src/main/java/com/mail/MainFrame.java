@@ -59,18 +59,20 @@ public class MainFrame extends JFrame {
     private final MailSender mailSender;
 
     // DB config
-    private static final String DB_URL  = "jdbc:postgresql://localhost:5432/jamesdb";
+    private static final String DB_URL  = "jdbc:postgresql://localhost:5433/jamesdb";
     private static final String DB_USER = "postgres";
     private static final String DB_PASS = "1234";
 
     // Dialogues
     private ComposeEmailDialog composeDialog;
 
-    public MainFrame(String userEmail) {
+    public MainFrame(String userEmail, String userPass) {
         this.userEmail = userEmail;
         this.mailSender = new MailSender(
-            "smtp.gmail.com", "587",
-            userEmail, "zqjd meaz wuzj yflc"
+            "smtp.gmail.com", 
+            "587",
+            userEmail,
+            userPass
         );
 
         this.emailTableModel = new EmailTableModel();

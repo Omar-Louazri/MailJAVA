@@ -43,6 +43,7 @@ public class LoginUI extends JFrame {
 
     private void doLogin() {
         String email = emailField.getText().trim();
+        String password = new String(passField.getPassword()).trim();
         // we ignore password validity for now
         if (email.isEmpty()) {
             JOptionPane.showMessageDialog(this,
@@ -53,7 +54,7 @@ public class LoginUI extends JFrame {
 
         // Launch the main app with this email
         SwingUtilities.invokeLater(() -> {
-            MainFrame main = new MainFrame(email);
+            MainFrame main = new MainFrame(email, password);
             main.setVisible(true);
         });
         dispose();
