@@ -5,7 +5,9 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Panel pour planifier un envoi d'email.
@@ -50,6 +52,18 @@ public class SchedulerPanel extends JPanel {
         bodyArea    = new JTextArea(8,30);
         dateStatus  = createStatusLabel();
         timeStatus  = createStatusLabel();
+
+
+        // …
+
+        DateTimeFormatter dateFmt  = DateTimeFormatter.ISO_LOCAL_DATE;          // 2025‑05‑19
+        DateTimeFormatter timeFmt  = DateTimeFormatter.ofPattern("HH:mm:ss");   // 22:00:00
+
+
+        dateField.setText(LocalDate.now().format(dateFmt));
+        timeField.setText(LocalTime.now()
+                                .withNano(0)           // keep seconds, drop nanos
+                                .format(timeFmt));
 
         addFormRow(form, gbc, row++, "To (comma-sep):",        toField,      null);
         addFormRow(form, gbc, row++, "Date (YYYY-MM-DD):",     dateField,    dateStatus);
